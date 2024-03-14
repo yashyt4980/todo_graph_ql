@@ -58,8 +58,7 @@ export const getTask = async (parent, { _id }) => {
 
 export const getTasks = async () => {
     try {
-        const tasks = await Task.find();
-        tasks.__v = undefined;
+        const tasks = await Task.find().select("task deadline _id");
         if(tasks) {
             return(tasks);
         } else {
